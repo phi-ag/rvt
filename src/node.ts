@@ -1,6 +1,6 @@
 import { openAsBlob } from "node:fs";
 
-import { Cfb } from "./cfb";
+import { Cfb } from "./cfb/index.js";
 
 export interface OpenPathSuccess {
   ok: true;

@@ -1,4 +1,4 @@
-import { Cfb } from "./cfb";
+import { Cfb } from "./cfb/index.js";
 
 const decoder = new TextDecoder("utf-16le");
 

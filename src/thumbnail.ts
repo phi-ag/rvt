@@ -1,4 +1,4 @@
-import { Cfb } from "./cfb";
+import { Cfb } from "./cfb/index.js";
 
 const findMarker = (data: Uint8Array): number | undefined => {
   const imageMarker = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a];

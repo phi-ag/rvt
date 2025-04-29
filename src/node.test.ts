@@ -2,7 +2,7 @@ import { join } from "node:path";
 
 import { describe, expect, test } from "vitest";
 
-import { Cfb } from "./cfb";
+import { Cfb } from "./cfb/index.js";
 import { type FileInfo, basicFileInfo } from "./info.js";
 import { openPath } from "./node.js";
 import { thumbnail } from "./thumbnail.js";
