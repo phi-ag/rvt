@@ -4,6 +4,14 @@
  */
 
 export {
+  type OpenFileSuccess,
+  type OpenFileError,
+  type OpenFileResult,
+  openFile,
+  tryOpenFile
+} from "./browser.js";
+
+export {
   type FileInfo,
   type BasicFileInfoSuccess,
   type BasicFileInfoError,
