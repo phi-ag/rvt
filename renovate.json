@@ -1,0 +1,21 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    ":semanticCommits",
+    "config:best-practices",
+    "group:monorepos",
+    "group:recommended"
+  ],
+  "git-submodules": {
+    "enabled": true
+  },
+  "postUpdateOptions": ["pnpmDedupe"],
+  "packageRules": [
+    { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
+    {
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true
+    }
+  ]
+}

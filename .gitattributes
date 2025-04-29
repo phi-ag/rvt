@@ -1,0 +1,4 @@
+*.rvt filter=lfs diff=lfs merge=lfs -text
+*.rte filter=lfs diff=lfs merge=lfs -text
+*.rfa filter=lfs diff=lfs merge=lfs -text
+*.rft filter=lfs diff=lfs merge=lfs -text

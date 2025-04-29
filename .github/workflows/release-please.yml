@@ -1,0 +1,37 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  attestations: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: googleapis/release-please-action@a02a34c4d625f9be7cb89156071d8567266a2445 # v4
+        id: release
+
+      - name: Checkout
+        if: ${{ steps.release.outputs.release_created }}
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Restore
+        if: ${{ steps.release.outputs.release_created }}
+        uses: ./.github/actions/restore
+
+      - name: Build
+        if: ${{ steps.release.outputs.release_created }}
+        run: pnpm build
+
+      - name: Publish
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public
