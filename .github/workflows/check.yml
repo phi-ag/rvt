@@ -1,0 +1,49 @@
+name: Check
+
+on:
+  push:
+
+jobs:
+  check:
+    if: ${{ !startsWith(github.event.head_commit.message, 'release:') }}
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          lfs: true
+
+      - name: Restore
+        uses: ./.github/actions/restore
+
+      - name: Audit
+        continue-on-error: true
+        run: pnpm audit
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Test
+        run: pnpm test:coverage
+
+      - name: Build
+        run: pnpm build
+
+      - name: Codecov test results
+        uses: codecov/test-results-action@f2dba722c67b86c6caa034178c6e4d35335f6706 # v1
+        with:
+          files: ./junit.xml
+
+      - name: Codecov coverage
+        uses: codecov/codecov-action@ad3126e916f78f00edff4ed0317cf185271ccc2d # v5
+        with:
+          files: ./coverage/cobertura-coverage.xml
+
+      - name: Publish dry-run
+        run: npm publish --dry-run
