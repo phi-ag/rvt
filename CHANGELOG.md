@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.0](https://github.com/phi-ag/rvt/compare/v0.0.2...v0.1.0) (2025-04-29)
+
+
+### Features
+
+* expose browser api ([9781d5e](https://github.com/phi-ag/rvt/commit/9781d5e44abd4780f3770dd01c095863dd02dcfd))
+
+
+### Documentation
+
+* deno not working yet, basic file info fn takes file handle as argument ([4592ae1](https://github.com/phi-ag/rvt/commit/4592ae1f7ebe9918924f5cbb34e9a298b9dcb555))
+
 ## [0.0.2](https://github.com/phi-ag/rvt/compare/v0.0.1...v0.0.2) (2025-04-29)
 
 
