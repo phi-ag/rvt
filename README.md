@@ -13,7 +13,7 @@ Parse Revit file format
 
 ### Examples
 
-Node.js / Deno / Bun
+Node.js / ~Deno~ / Bun
 
 ```ts
 import { basicFileInfo, thumbnail } from "@phi-ag/rvt";
@@ -51,9 +51,9 @@ tryOpenPath("valid.rvt");
 tryOpenPath("invalid.rvt");
 // => { ok: false; error: "Error message" }
 
-tryBasicFileInfo("valid.rvt");
+tryBasicFileInfo(validFile);
 // => { ok: true; data: { version, build, ... } }
 
-tryBasicFileInfo("invalid.rvt");
+tryBasicFileInfo(invalidFile);
 // => { ok: false; error: "Error message" }
 ```
