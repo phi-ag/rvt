@@ -8,10 +8,10 @@
  *
  * @module
  */
-import { sliceUint8, sliceView } from "./blob.js";
 import { Boundaries } from "./boundaries.js";
 import { type Directory, type Entry, parseDirectory } from "./directory.js";
 import { type Header, maxFatSectorsHeader, parseHeader } from "./header.js";
+import { type Source } from "./source.js";
 
 const endOfChain = 0xfffffffe;
 
@@ -77,22 +77,25 @@ const sectorBounds = (
   return bounds;
 };
 
-const boundsData = async (blob: Blob, bounds: Boundaries): Promise<Uint8Array> => {
+const boundsData = async (source: Source, bounds: Boundaries): Promise<Uint8Array> => {
   const data = new Uint8Array(bounds.size());
 
   for (const [start, end, offset] of bounds.items) {
-    const chunk = await sliceUint8(blob, start, end);
+    const chunk = await source.sliceBytes(start, end);
     data.set(chunk, offset);
   }
 
   return data;
 };
 
-const boundsEntries = async (blob: Blob, bounds: Boundaries): Promise<Uint32Array> => {
+const boundsEntries = async (
+  source: Source,
+  bounds: Boundaries
+): Promise<Uint32Array> => {
   const entries = new Uint32Array(bounds.size() >> 2);
 
   for (const [start, end, offset] of bounds.items) {
-    const view = await sliceView(blob, start, end);
+    const view = await source.sliceView(start, end);
     const chunkEntries = view.byteLength >> 2;
     const chunkOffset = offset >> 2;
     for (let i = 0; i < chunkEntries; i++) {
@@ -104,13 +107,13 @@ const boundsEntries = async (blob: Blob, bounds: Boundaries): Promise<Uint32Arra
 };
 
 const createDirectory = async (
-  blob: Blob,
+  source: Source,
   header: Header,
   fat: Uint32Array
 ): Promise<Directory> => {
   const sectors = directorySectorChain(header, fat);
   const bounds = sectorBounds(header, sectors);
-  const data = await boundsData(blob, bounds);
+  const data = await boundsData(source, bounds);
   return parseDirectory(header, data);
 };
 
@@ -118,7 +121,7 @@ const createDirectory = async (
  * NOTE: Never tested with more than one DIFAT sector
  */
 const addDiFatEntries = async (
-  blob: Blob,
+  source: Source,
   header: Header,
   fatSectors: Uint32Array
 ): Promise<void> => {
@@ -131,7 +134,7 @@ const addDiFatEntries = async (
 
     const diFatStart = (current + 1) * header.sectorSize;
     const diFatEnd = diFatStart + header.sectorSize;
-    const diFat = await sliceView(blob, diFatStart, diFatEnd);
+    const diFat = await source.sliceView(diFatStart, diFatEnd);
 
     const max = header.maxSectorEntries - 1;
     const offset = i * max + maxFatSectorsHeader;
@@ -149,19 +152,19 @@ const addDiFatEntries = async (
 };
 
 const createFat = async (
-  blob: Blob,
+  source: Source,
   header: Header,
   fatSectors: Uint32Array
 ): Promise<Uint32Array> => {
   const fatBounds = sectorBounds(header, fatSectors);
-  return await boundsEntries(blob, fatBounds);
+  return await boundsEntries(source, fatBounds);
 };
 
 /**
  * NOTE: Never tested with more than one MiniFat sector
  */
 const createMiniFat = async (
-  blob: Blob,
+  source: Source,
   header: Header,
   fat: Uint32Array,
   root: Entry
@@ -171,11 +174,11 @@ const createMiniFat = async (
     (root.size + (1 << header.miniSectorSizeBits) - 1) >> header.miniSectorSizeBits;
 
   const miniFatBounds = sectorBounds(header, miniFatSectors, miniFatCount * 4);
-  return await boundsEntries(blob, miniFatBounds);
+  return await boundsEntries(source, miniFatBounds);
 };
 
 export class Cfb {
-  readonly #blob: Blob;
+  readonly #source: Source;
   readonly #header: Header;
   readonly #directory: Directory;
   readonly #fat: Uint32Array;
@@ -183,14 +186,14 @@ export class Cfb {
   readonly #miniStreamSectors: Uint32Array;
 
   constructor(
-    blob: Blob,
+    source: Source,
     header: Header,
     directory: Directory,
     fat: Uint32Array,
     miniFat: Uint32Array,
     miniStreamSectors: Uint32Array
   ) {
-    this.#blob = blob;
+    this.#source = source;
     this.#header = header;
     this.#directory = directory;
     this.#fat = fat;
@@ -198,24 +201,24 @@ export class Cfb {
     this.#miniStreamSectors = miniStreamSectors;
   }
 
-  static initialize = async (blob: Blob): Promise<Cfb> => {
-    if (blob.size < 512) throw Error(`Compound file too small (${blob.size})`);
+  static initialize = async (source: Source): Promise<Cfb> => {
+    if (source.size < 512) throw Error(`Compound file too small (${source.size})`);
 
-    const [header, fatSectors] = parseHeader(await sliceUint8(blob, 0, 512));
+    const [header, fatSectors] = parseHeader(await source.sliceBytes(0, 512));
     //console.debug("Header", header);
 
-    await addDiFatEntries(blob, header, fatSectors);
-    const fat = await createFat(blob, header, fatSectors);
-    const directory = await createDirectory(blob, header, fat);
+    await addDiFatEntries(source, header, fatSectors);
+    const fat = await createFat(source, header, fatSectors);
+    const directory = await createDirectory(source, header, fat);
 
     const root = directory.find((entry) => entry.type === 5);
     if (!root) throw Error("Compound file root not found");
     //console.log("root", root);
 
-    const miniFat = await createMiniFat(blob, header, fat, root);
+    const miniFat = await createMiniFat(source, header, fat, root);
     const miniStreamSectors = miniStreamSectorChain(header, fat, root);
 
-    return new Cfb(blob, header, directory, fat, miniFat, miniStreamSectors);
+    return new Cfb(source, header, directory, fat, miniFat, miniStreamSectors);
   };
 
   findEntry = (name: string): Entry | undefined =>
@@ -285,7 +288,7 @@ export class Cfb {
 
   miniStreamData = async (start: number, size: number): Promise<Uint8Array> => {
     const bounds = this.miniStreamBounds(start, size);
-    return await boundsData(this.#blob, bounds);
+    return await boundsData(this.#source, bounds);
   };
 
   entryData = async (entry: Entry): Promise<Uint8Array> => {
@@ -293,6 +296,6 @@ export class Cfb {
       return await this.miniStreamData(entry.start, entry.size);
 
     const bounds = this.fatBounds(entry.start, entry.size);
-    return await boundsData(this.#blob, bounds);
+    return await boundsData(this.#source, bounds);
   };
 }

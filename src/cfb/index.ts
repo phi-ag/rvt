@@ -14,4 +14,8 @@ export {
 
 export { type Boundary, Boundaries } from "./boundaries.js";
 
+export { type Source } from "./source.js";
+
+export { BlobSource } from "./blob.js";
+
 export { Cfb } from "./cfb.js";

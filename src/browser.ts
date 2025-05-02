@@ -1,4 +1,4 @@
-import { Cfb } from "./cfb/index.js";
+import { BlobSource, Cfb } from "./cfb/index.js";
 
 export interface OpenFileSuccess {
   ok: true;
@@ -14,7 +14,8 @@ export interface OpenFileError {
 
 export type OpenFileResult = OpenFileSuccess | OpenFileError;
 
-export const openFile = async (file: File): Promise<Cfb> => Cfb.initialize(file);
+export const openFile = async (file: File): Promise<Cfb> =>
+  Cfb.initialize(new BlobSource(file));
 
 export const tryOpenFile = async (file: File): Promise<OpenFileResult> => {
   try {

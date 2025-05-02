@@ -3,6 +3,8 @@
  * @module
  */
 
+export { type Source, BlobSource, Cfb } from "./cfb/index.js";
+
 export {
   type OpenFileSuccess,
   type OpenFileError,

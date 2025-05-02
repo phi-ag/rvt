@@ -1,6 +1,6 @@
 import { openAsBlob } from "node:fs";
 
-import { Cfb } from "./cfb/index.js";
+import { BlobSource, Cfb } from "./cfb/index.js";
 
 export interface OpenPathSuccess {
   ok: true;
@@ -17,7 +17,7 @@ export interface OpenPathError {
 export type OpenPathResult = OpenPathSuccess | OpenPathError;
 
 export const openPath = async (path: string): Promise<Cfb> =>
-  Cfb.initialize(await openAsBlob(path));
+  Cfb.initialize(new BlobSource(await openAsBlob(path)));
 
 export const tryOpenPath = async (path: string): Promise<OpenPathResult> => {
   try {
