@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/phi-ag/rvt/compare/v0.1.0...v0.2.0) (2025-05-02)
+
+
+### Features
+
+* add deno support, closes [#7](https://github.com/phi-ag/rvt/issues/7) ([1511f5a](https://github.com/phi-ag/rvt/commit/1511f5ae083071403c91e16784e5108b8c0c1c93))
+
+
+### Code Refactoring
+
+* introduce source abstraction ([39dfe68](https://github.com/phi-ag/rvt/commit/39dfe687db4f17726c58f66afeb819bcbd9bbca5))
+
 ## [0.1.0](https://github.com/phi-ag/rvt/compare/v0.0.2...v0.1.0) (2025-04-29)
 
 
