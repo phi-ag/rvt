@@ -14,6 +14,9 @@ importers:
       '@trivago/prettier-plugin-sort-imports':
         specifier: 5.2.2
         version: 5.2.2(prettier@3.5.3)
+      '@types/deno':
+        specifier: 2.2.0
+        version: 2.2.0
       '@types/node':
         specifier: 22.15.3
         version: 22.15.3
@@ -415,6 +418,9 @@ packages:
         optional: true
       svelte:
         optional: true
+
+  '@types/deno@2.2.0':
+    resolution: {integrity: sha512-4x6M/ZSyoQy6fJeMArP0dvvNT4IOolfySyukuqqKhsLmSXDV4wGanqXIZ+xFihw3TlReS6JTa4hRG9nAZInpmw==}
 
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
@@ -1474,6 +1480,8 @@ snapshots:
       prettier: 3.5.3
     transitivePeerDependencies:
       - supports-color
+
+  '@types/deno@2.2.0': {}
 
   '@types/estree@1.0.5': {}
 

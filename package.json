@@ -18,7 +18,8 @@
   "module": "./dist/index.js",
   "exports": {
     ".": "./dist/index.js",
-    "./node": "./dist/node.js"
+    "./node": "./dist/node.js",
+    "./deno": "./dist/deno.js"
   },
   "scripts": {
     "build": "tsc",
@@ -35,6 +36,7 @@
   "devDependencies": {
     "@eslint/js": "9.25.1",
     "@trivago/prettier-plugin-sort-imports": "5.2.2",
+    "@types/deno": "2.2.0",
     "@types/node": "22.15.3",
     "@vitest/coverage-v8": "3.1.2",
     "eslint": "9.25.1",

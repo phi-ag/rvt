@@ -13,7 +13,7 @@ Parse Revit file format
 
 ### Examples
 
-Node.js / ~Deno~ / Bun
+Node.js / Bun
 
 ```ts
 import { basicFileInfo, thumbnail } from "@phi-ag/rvt";
@@ -22,6 +22,19 @@ import { openPath } from "@phi-ag/rvt/node";
 const file = await openPath("family.rfa");
 const info = await basicFileInfo(file);
 const image = await thumbnail(file);
+
+console.log(info);
+```
+
+Deno
+
+```ts
+import { basicFileInfo, thumbnail } from "@phi-ag/rvt";
+import { openPath } from "@phi-ag/rvt/deno";
+
+using file = await openPath("family.rfa");
+const info = await basicFileInfo(file.data);
+const image = await thumbnail(file.data);
 
 console.log(info);
 ```
