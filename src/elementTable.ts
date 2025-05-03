@@ -1,5 +1,3 @@
-import { writeFileSync } from "node:fs";
-
 import { Cfb } from "./cfb/index.js";
 import * as array from "./utils/array.js";
 
@@ -8,9 +6,7 @@ export interface ElementEntry {
   unknown1: number;
   unknown2: number;
   unknown3: number;
-  id2: bigint;
   unknown4: bigint;
-  unknown5: number;
 }
 
 export interface ElementTable {
@@ -18,12 +14,14 @@ export interface ElementTable {
   size: number;
 }
 
-export const parseElementTable = async (data: Uint8Array): Promise<ElementTable> => {
-  const header = data.subarray(0, 8);
-  if (!array.isZero(header))
-    throw Error(`Unexpected element table compressed header non-zero [${header}]`);
-
-  const stream = new Blob([data.subarray(8)]).stream();
+/*
+ * TODO: quick and dirty decompress hack
+ * - should be streaming
+ * - underlying CFB should stream too
+ * - `for await` doesn't work in Safari
+ */
+const decompress = async (data: Uint8Array): Promise<Uint8Array> => {
+  const stream = new Blob([data]).stream();
   const decompressedStream = stream.pipeThrough(new DecompressionStream("gzip"));
 
   const chunks = [];
@@ -33,8 +31,15 @@ export const parseElementTable = async (data: Uint8Array): Promise<ElementTable>
 
   const blob = new Blob(chunks);
   const buffer = await blob.arrayBuffer();
-  const decompressed = new Uint8Array(buffer);
+  return new Uint8Array(buffer);
+};
 
+export const parseElementTable = async (data: Uint8Array): Promise<ElementTable> => {
+  const header = data.subarray(0, 8);
+  if (!array.isZero(header))
+    throw Error(`Unexpected element table compressed header non-zero [${header}]`);
+
+  const decompressed = await decompress(data.subarray(8));
   const fileVersion = decompressed[0];
 
   if (decompressed[1] !== 0x05)
@@ -58,14 +63,16 @@ export const parseElementTable = async (data: Uint8Array): Promise<ElementTable>
     const id2 = view.getBigInt64(offset + 20, true);
     const unknown4 = view.getBigInt64(offset + 28, true);
     const unknown5 = view.getInt32(offset + 36, true);
+
+    if (id !== id2) throw Error(`Id mismatch (${id} != ${id2})`);
+    if (unknown5 !== 0) throw Error(`Unknown5 is not zero (${id})`);
+
     ids.push({
       id,
       unknown1,
       unknown2,
       unknown3,
-      id2,
-      unknown4,
-      unknown5
+      unknown4
     });
   }
 
@@ -96,6 +103,12 @@ export const parseElementTable = async (data: Uint8Array): Promise<ElementTable>
         )
     ).length
   );
+
+  //console.log(ids.filter((e) => e.unknown4 !== -1n).length);
+
+  console.log(ids.filter((e) => e.id <= e.unknown4));
+  console.log(ids.find((e) => e.id === 1530n));
+  console.log(ids.find((e) => e.id === 1527n));
 
   //const foo = ids.filter((e) => e.id > e.unknown4);
   //writeFileSync("ids.txt", foo.map((e) => e.id).join(","));

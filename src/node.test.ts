@@ -10,6 +10,9 @@ import { thumbnail } from "./thumbnail.js";
 export const examplePath = (...paths: string[]) =>
   join(import.meta.dirname, "..", "examples", ...paths);
 
+export const exampleFile = (fileName: string): Promise<Cfb> =>
+  openPath(examplePath(fileName));
+
 export const adskExamplePath = (fileName: string): string =>
   join(examplePath("Autodesk", fileName));
 
