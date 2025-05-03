@@ -7,11 +7,14 @@ import { type FileInfo, basicFileInfo } from "./info.js";
 import { openPath } from "./node.js";
 import { thumbnail } from "./thumbnail.js";
 
-export const examplePath = (fileName: string): string =>
-  join(import.meta.dirname, "..", "examples", fileName);
+export const examplePath = (...paths: string[]) =>
+  join(import.meta.dirname, "..", "examples", ...paths);
 
-export const exampleFile = (fileName: string): Promise<Cfb> =>
-  openPath(examplePath(fileName));
+export const adskExamplePath = (fileName: string): string =>
+  join(examplePath("Autodesk", fileName));
+
+export const adskExampleFile = (fileName: string): Promise<Cfb> =>
+  openPath(adskExamplePath(fileName));
 
 type ExpectedFileInfo = Omit<FileInfo, "fileVersion" | "content">;
 
@@ -141,7 +144,7 @@ describe("revit", () => {
   ];
 
   test.each(families)("family %s", async (fileName, expected) => {
-    const file = await exampleFile(fileName);
+    const file = await adskExampleFile(fileName);
     const info = await basicFileInfo(file);
     const image = await thumbnail(file);
 
