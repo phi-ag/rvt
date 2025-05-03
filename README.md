@@ -70,3 +70,28 @@ tryBasicFileInfo(validFile);
 tryBasicFileInfo(invalidFile);
 // => { ok: false; error: "Error message" }
 ```
+
+## Development
+
+Install [fnm](https://github.com/Schniz/fnm?tab=readme-ov-file#installation) or [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) ([nvm-windows](https://github.com/coreybutler/nvm-windows?tab=readme-ov-file#installation--upgrades))
+
+Install `Node.js`
+
+    fnm use
+
+Install `pnpm`
+
+    corepack enable
+    corepack prepare --activate
+
+Install packages
+
+    pnpm i
+
+Watch
+
+    pnpm dev
+
+Test
+
+    pnpm test
