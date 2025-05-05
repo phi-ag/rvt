@@ -6,9 +6,6 @@
     "group:monorepos",
     "group:recommended"
   ],
-  "git-submodules": {
-    "enabled": true
-  },
   "postUpdateOptions": ["pnpmDedupe"],
   "packageRules": [
     { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
