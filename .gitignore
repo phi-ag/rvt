@@ -3,3 +3,4 @@ coverage/
 dist/
 
 junit.xml
+junit.bun.xml
