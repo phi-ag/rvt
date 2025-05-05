@@ -7,8 +7,18 @@
     "group:recommended"
   ],
   "postUpdateOptions": ["pnpmDedupe"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.dvmrc$"],
+      "matchStrings": ["^(?<currentValue>[^\\s]+)"],
+      "depNameTemplate": "deno",
+      "packageNameTemplate": "denoland/deno",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
   "packageRules": [
-    { "matchDepNames": ["node", "@types/node"], "ignoreUnstable": false },
+    { "matchDepNames": ["node"], "ignoreUnstable": false },
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "matchCurrentVersion": "!/^0/",

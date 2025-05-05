@@ -35,6 +35,16 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Setup Deno
+        uses: denoland/setup-deno@909cc5acb0fdd60627fb858598759246509fa755 # v2.0.2
+        with:
+          deno-version-file: .dvmrc
+
+      - name: Test Deno
+        run: |
+          cd tests/deno
+          deno test --allow-read
+
       - name: Codecov test results
         uses: codecov/test-results-action@f2dba722c67b86c6caa034178c6e4d35335f6706 # v1
         with:
