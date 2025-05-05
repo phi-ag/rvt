@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.2.1](https://github.com/phi-ag/rvt/compare/v0.2.0...v0.2.1) (2025-05-05)
+
+
+### Documentation
+
+* development instructions ([6a3ae9d](https://github.com/phi-ag/rvt/commit/6a3ae9d626d51127c000cdd084eada3de93f90c1))
+* reverse engineering example ([1bb52dd](https://github.com/phi-ag/rvt/commit/1bb52ddc7367c586de92d4cbaee9269541f6b193))
+
+
+### Miscellaneous Chores
+
+* **deps:** pin oven-sh/setup-bun action to 735343b ([6761b7e](https://github.com/phi-ag/rvt/commit/6761b7efcb54a303c272adb2b21417de6a0ba2a6))
+* **deps:** update dependency @types/deno to v2.3.0 ([46ab6d9](https://github.com/phi-ag/rvt/commit/46ab6d9ef4aacd391667df37e8d3f43c3bd6e8e9))
+* **deps:** update eslint monorepo to v9.26.0 ([952c872](https://github.com/phi-ag/rvt/commit/952c87283c3f08854d27118aee451806b578c47a))
+* **deps:** update vitest monorepo to v3.1.3 ([5796520](https://github.com/phi-ag/rvt/commit/57965205a9a367416a4bcbdfbcf0f91ac7b3ff74))
+
+
+### Tests
+
+* add bun ([c8e2eef](https://github.com/phi-ag/rvt/commit/c8e2eeffca1066ab9ab9bcf417926ec00c0b1eae))
+* add deno ([f3cf79b](https://github.com/phi-ag/rvt/commit/f3cf79bb1d97df699c83bd27bc7ca48c6aa809e4))
+* generate deno junit report ([3f0e201](https://github.com/phi-ag/rvt/commit/3f0e20126e6dcdb53914f9bd115efbc5fd320722))
+
+
+### Continuous Integration
+
+* **renovate:** disable git submodule checking ([fae4792](https://github.com/phi-ag/rvt/commit/fae4792b52f5f3349a2e03f8ac68ac4496038189))
+
 ## [0.2.0](https://github.com/phi-ag/rvt/compare/v0.1.0...v0.2.0) (2025-05-02)
 
 
