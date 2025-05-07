@@ -68,4 +68,4 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Publish dry-run
-        run: npm publish --dry-run
+        run: npm pack --dry-run
