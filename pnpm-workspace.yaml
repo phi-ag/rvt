@@ -1,2 +1,4 @@
 autoInstallPeers: false
 strictPeerDependencies: true
+ignoredBuiltDependencies:
+  - esbuild
