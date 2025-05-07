@@ -10,7 +10,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^\\.dvmrc$"],
+      "managerFilePatterns": [".dvmrc"],
       "matchStrings": ["^(?<currentValue>[^\\s]+)"],
       "depNameTemplate": "deno",
       "packageNameTemplate": "denoland/deno",
