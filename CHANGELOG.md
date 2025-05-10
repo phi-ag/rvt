@@ -1,5 +1,28 @@
 # Changelog
 
+## [0.2.2](https://github.com/phi-ag/rvt/compare/v0.2.1...v0.2.2) (2025-05-10)
+
+
+### Miscellaneous Chores
+
+* **config:** migrate renovate config ([6999258](https://github.com/phi-ag/rvt/commit/6999258fd7512c35c6b00da071d08171b7804616))
+* **deps:** update dependency @types/node to v22.15.12 ([6b7ab14](https://github.com/phi-ag/rvt/commit/6b7ab145d6ff8a3d7a2e9201179b2ed7b6be966f))
+* **deps:** update dependency @types/node to v22.15.14 ([46d7d04](https://github.com/phi-ag/rvt/commit/46d7d049dd98520075d0bf05c66caa35c3e933bc))
+* **deps:** update dependency @types/node to v22.15.15 ([9bde15e](https://github.com/phi-ag/rvt/commit/9bde15e5c0e9fd0ea45250b8dd3aba4bcba8547f))
+* **deps:** update dependency @types/node to v22.15.17 ([34971ab](https://github.com/phi-ag/rvt/commit/34971ab8eb8cf032b8baf173cec0aefecce4c8f8))
+* **deps:** update dependency bun to v1.2.13 ([919e035](https://github.com/phi-ag/rvt/commit/919e0350c23d118825fa12ce93ec08e2139368a1))
+* **deps:** update dependency globals to v16.1.0 ([e2e2b3c](https://github.com/phi-ag/rvt/commit/e2e2b3cfa482a102431c7bf734f8c7d3bcbb5234))
+* **deps:** update dependency typescript-eslint to v8.32.0 ([3ba43a8](https://github.com/phi-ag/rvt/commit/3ba43a8e2e32d4f48ad5d4227eae2ad3708b3182))
+* **deps:** update node.js to v24 ([ede2733](https://github.com/phi-ag/rvt/commit/ede2733d9717d7f52a01525b02755692b13934b4))
+* **deps:** update node.js to v24.0.1 ([670e04e](https://github.com/phi-ag/rvt/commit/670e04e6929486a083c4b455237f4091f979c940))
+* move pnpm postbuild settings ([dfb9529](https://github.com/phi-ag/rvt/commit/dfb9529c6e9dd75e997234e0c91a0ecf5ef2d1c9))
+* move pnpm settings ([653c50f](https://github.com/phi-ag/rvt/commit/653c50f19653f50f032a560a527884d5308b9842))
+
+
+### Continuous Integration
+
+* use npm pack for publish dry-run ([ece6224](https://github.com/phi-ag/rvt/commit/ece62244c4d011215fff5e239d6b8838fabdc71f))
+
 ## [0.2.1](https://github.com/phi-ag/rvt/compare/v0.2.0...v0.2.1) (2025-05-05)
 
 
