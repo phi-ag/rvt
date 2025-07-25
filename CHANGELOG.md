@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/phi-ag/rvt/compare/v0.2.2...v0.2.3) (2025-07-25)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v24.1.0 ([aaedc4f](https://github.com/phi-ag/rvt/commit/aaedc4f5f0283bf517c1aaf839cd2874628ba9c8))
+* **deps:** update eslint monorepo to v9.32.0 ([5f2a3aa](https://github.com/phi-ag/rvt/commit/5f2a3aa6f8aa48b719ffc0db75e46fc8109c8412))
+
 ## [0.2.2](https://github.com/phi-ag/rvt/compare/v0.2.1...v0.2.2) (2025-07-22)
 
 
