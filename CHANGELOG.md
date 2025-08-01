@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.3](https://github.com/phi-ag/rvt/compare/v0.2.2...v0.2.3) (2025-08-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([cc44db6](https://github.com/phi-ag/rvt/commit/cc44db630faa1157ee2768d3ff7db76ca01e66b8))
+* **deps:** update dependency @types/node to v24.1.0 ([aaedc4f](https://github.com/phi-ag/rvt/commit/aaedc4f5f0283bf517c1aaf839cd2874628ba9c8))
+* **deps:** update dependency deno to v2.4.3 ([87a7052](https://github.com/phi-ag/rvt/commit/87a7052bd3147b53312ab3951e4dd894271644e4))
+* **deps:** update eslint monorepo to v9.32.0 ([5f2a3aa](https://github.com/phi-ag/rvt/commit/5f2a3aa6f8aa48b719ffc0db75e46fc8109c8412))
+* **deps:** update node.js to v24.5.0 ([96d220f](https://github.com/phi-ag/rvt/commit/96d220f00b1cd13697c0351a349a244634d6cce0))
+* **deps:** update pnpm to v10.14.0 ([abf22f2](https://github.com/phi-ag/rvt/commit/abf22f2f08e632e4c4f76790b091f001716db3f2))
+
 ## [0.2.2](https://github.com/phi-ag/rvt/compare/v0.2.1...v0.2.2) (2025-07-22)
 
 
