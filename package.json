@@ -43,7 +43,7 @@
     "globals": "16.4.0",
     "prettier": "3.6.2",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.45.0",
+    "typescript-eslint": "8.46.0",
     "vitest": "3.2.4"
   },
   "packageManager": "pnpm@10.18.1+sha512.77a884a165cbba2d8d1c19e3b4880eee6d2fcabd0d879121e282196b80042351d5eb3ca0935fa599da1dc51265cc68816ad2bddd2a2de5ea9fdf92adbec7cd34"
