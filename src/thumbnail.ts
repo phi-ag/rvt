@@ -21,7 +21,7 @@ export const parsePreview = (data: Uint8Array): Blob => {
   const marker = findMarker(data);
   if (!marker) throw Error("Failed to find preview image marker");
 
-  return new Blob([data.subarray(marker)], {
+  return new Blob([data.subarray(marker) as BlobPart], {
     type: "image/png"
   });
 };
