@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2025-10-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v24.8.0 ([75dde1b](https://github.com/phi-ag/rvt/commit/75dde1bbdd9f524402894ed73e00872dd76153a5))
+* **deps:** update dependency @types/node to v24.8.1 ([e4b5e79](https://github.com/phi-ag/rvt/commit/e4b5e79ca126c73f45f8559e1f82b6844e3fde27))
+* **deps:** update eslint monorepo to v9.38.0 ([36e0bff](https://github.com/phi-ag/rvt/commit/36e0bffbaa32c5556795c40f690b53a772ee717f))
+* **deps:** update node.js to v25 ([e7e24a8](https://github.com/phi-ag/rvt/commit/e7e24a8277428864f90ec655168340b6608d5bfd))
+
 ## [0.2.3](https://github.com/phi-ag/rvt/compare/v0.2.2...v0.2.3) (2025-10-15)
 
 
