@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2025-10-24)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([df83e56](https://github.com/phi-ag/rvt/commit/df83e565dbf0430a3e20c563c4a6e673e18f0df1))
+* **deps:** update dependency @types/node to v24.8.0 ([75dde1b](https://github.com/phi-ag/rvt/commit/75dde1bbdd9f524402894ed73e00872dd76153a5))
+* **deps:** update dependency @types/node to v24.8.1 ([e4b5e79](https://github.com/phi-ag/rvt/commit/e4b5e79ca126c73f45f8559e1f82b6844e3fde27))
+* **deps:** update dependency @types/node to v24.9.1 ([bad33ca](https://github.com/phi-ag/rvt/commit/bad33ca21ffca3a4e2a888149db0e242d0503ac2))
+* **deps:** update dependency bun to v1.3.1 ([390934f](https://github.com/phi-ag/rvt/commit/390934fb768a185de1edb2872043f4e616a65cb2))
+* **deps:** update dependency typescript-eslint to v8.46.2 ([f7dde1e](https://github.com/phi-ag/rvt/commit/f7dde1e6e1e694a4f671af4507718a3c4e678e34))
+* **deps:** update eslint monorepo to v9.38.0 ([36e0bff](https://github.com/phi-ag/rvt/commit/36e0bffbaa32c5556795c40f690b53a772ee717f))
+* **deps:** update googleapis/release-please-action digest to 16a9c90 ([af54121](https://github.com/phi-ag/rvt/commit/af5412153f9dd59002b450a86336ffd8851fcabc))
+* **deps:** update node.js to v25 ([e7e24a8](https://github.com/phi-ag/rvt/commit/e7e24a8277428864f90ec655168340b6608d5bfd))
+* **deps:** update pnpm to v10.19.0 ([932eae0](https://github.com/phi-ag/rvt/commit/932eae08b5fe0a4aefde11183d475d4243dfd1d6))
+* **deps:** update vitest monorepo to v4 ([1141a82](https://github.com/phi-ag/rvt/commit/1141a827f791aa6068c4c37ac8fe137bb78081d3))
+* **deps:** update vitest monorepo to v4.0.2 ([0dd46d2](https://github.com/phi-ag/rvt/commit/0dd46d2e1179a797e41d3e4e4f29a87c73fbaa57))
+* **deps:** update vitest monorepo to v4.0.3 ([c527cc7](https://github.com/phi-ag/rvt/commit/c527cc790103a14f3a5d994ab174c296f3c351b9))
+
 ## [0.2.3](https://github.com/phi-ag/rvt/compare/v0.2.2...v0.2.3) (2025-10-15)
 
 
