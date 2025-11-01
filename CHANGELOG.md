@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2025-11-01)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([774f1d2](https://github.com/phi-ag/rvt/commit/774f1d2c482c30b369c02ea858b4cc9aa7bd6257))
+* **deps:** lock file maintenance ([df83e56](https://github.com/phi-ag/rvt/commit/df83e565dbf0430a3e20c563c4a6e673e18f0df1))
+* **deps:** update dependency @types/node to v24.8.0 ([75dde1b](https://github.com/phi-ag/rvt/commit/75dde1bbdd9f524402894ed73e00872dd76153a5))
+* **deps:** update dependency @types/node to v24.8.1 ([e4b5e79](https://github.com/phi-ag/rvt/commit/e4b5e79ca126c73f45f8559e1f82b6844e3fde27))
+* **deps:** update dependency @types/node to v24.9.1 ([bad33ca](https://github.com/phi-ag/rvt/commit/bad33ca21ffca3a4e2a888149db0e242d0503ac2))
+* **deps:** update dependency @types/node to v24.9.2 ([178a82c](https://github.com/phi-ag/rvt/commit/178a82c5c42b7f24b9f5296ce5e282da6d4fbde6))
+* **deps:** update dependency bun to v1.3.1 ([390934f](https://github.com/phi-ag/rvt/commit/390934fb768a185de1edb2872043f4e616a65cb2))
+* **deps:** update dependency deno to v2.5.6 ([f31bb46](https://github.com/phi-ag/rvt/commit/f31bb46a82b5f74e003875af102c226f6b32984d))
+* **deps:** update dependency globals to v16.5.0 ([c3d00d5](https://github.com/phi-ag/rvt/commit/c3d00d5f8a195c262bfeeefb0dd69e2a8fbdab42))
+* **deps:** update dependency typescript-eslint to v8.46.2 ([f7dde1e](https://github.com/phi-ag/rvt/commit/f7dde1e6e1e694a4f671af4507718a3c4e678e34))
+* **deps:** update eslint monorepo to v9.38.0 ([36e0bff](https://github.com/phi-ag/rvt/commit/36e0bffbaa32c5556795c40f690b53a772ee717f))
+* **deps:** update googleapis/release-please-action digest to 16a9c90 ([af54121](https://github.com/phi-ag/rvt/commit/af5412153f9dd59002b450a86336ffd8851fcabc))
+* **deps:** update node.js to v25 ([e7e24a8](https://github.com/phi-ag/rvt/commit/e7e24a8277428864f90ec655168340b6608d5bfd))
+* **deps:** update node.js to v25.1.0 ([fe274fb](https://github.com/phi-ag/rvt/commit/fe274fbdf70c4dc0a0bb3e33e67520ba1f84b6e5))
+* **deps:** update pnpm to v10.19.0 ([932eae0](https://github.com/phi-ag/rvt/commit/932eae08b5fe0a4aefde11183d475d4243dfd1d6))
+* **deps:** update pnpm to v10.20.0 ([736d618](https://github.com/phi-ag/rvt/commit/736d6187551c1048963c084b5cc73b09c1b3542a))
+* **deps:** update vitest monorepo to v4 ([1141a82](https://github.com/phi-ag/rvt/commit/1141a827f791aa6068c4c37ac8fe137bb78081d3))
+* **deps:** update vitest monorepo to v4.0.2 ([0dd46d2](https://github.com/phi-ag/rvt/commit/0dd46d2e1179a797e41d3e4e4f29a87c73fbaa57))
+* **deps:** update vitest monorepo to v4.0.3 ([c527cc7](https://github.com/phi-ag/rvt/commit/c527cc790103a14f3a5d994ab174c296f3c351b9))
+* **deps:** update vitest monorepo to v4.0.4 ([d8ae053](https://github.com/phi-ag/rvt/commit/d8ae05337fada3699e237622a94d67db2f8be98d))
+* **deps:** update vitest monorepo to v4.0.5 ([6fda5fe](https://github.com/phi-ag/rvt/commit/6fda5fe241166b4c578e887737c455474907c362))
+* **deps:** update vitest monorepo to v4.0.6 ([64f2285](https://github.com/phi-ag/rvt/commit/64f2285c3288d60986824906959cc806b2aae9af))
+
 ## [0.2.3](https://github.com/phi-ag/rvt/compare/v0.2.2...v0.2.3) (2025-10-15)
 
 
