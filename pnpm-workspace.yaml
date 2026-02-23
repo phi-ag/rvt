@@ -1,4 +1,9 @@
+savePrefix: ""
 autoInstallPeers: false
 strictPeerDependencies: true
-ignoredBuiltDependencies:
-  - esbuild
+minimumReleaseAge: 1440
+blockExoticSubdeps: true
+trustPolicy: "no-downgrade"
+
+allowBuilds:
+  esbuild: false
