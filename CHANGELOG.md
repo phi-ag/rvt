@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.5](https://github.com/phi-ag/rvt/compare/v0.2.4...v0.2.5) (2026-04-03)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency deno to v2.7.11 ([61526ef](https://github.com/phi-ag/rvt/commit/61526ef8cb597d9485ddde507246d3a3363cb035))
+* **deps:** update dependency typescript-eslint to v8.58.0 ([5958ce4](https://github.com/phi-ag/rvt/commit/5958ce4ebacbf0f728584398a07d6f3eb1a5d131))
+* **deps:** update node.js to v25.9.0 ([6e0f820](https://github.com/phi-ag/rvt/commit/6e0f8207de34976ccbc396f4f8ca23b3eab68f06))
+
 ## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2026-04-01)
 
 
