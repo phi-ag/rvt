@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.2.5](https://github.com/phi-ag/rvt/compare/v0.2.4...v0.2.5) (2026-04-12)
+
+
+### Miscellaneous Chores
+
+* **deps:** update dependency @types/node to v25.5.2 ([4866a9d](https://github.com/phi-ag/rvt/commit/4866a9dac975f0541f540d09bdd9b1fc5ed32162))
+* **deps:** update dependency deno to v2.7.11 ([61526ef](https://github.com/phi-ag/rvt/commit/61526ef8cb597d9485ddde507246d3a3363cb035))
+* **deps:** update dependency deno to v2.7.12 ([0612176](https://github.com/phi-ag/rvt/commit/0612176cffde20409d7b99410b42651a970dd86d))
+* **deps:** update dependency eslint to v10.2.0 ([a53835d](https://github.com/phi-ag/rvt/commit/a53835dc09b3f123958fba12a702accc8e7ddcc1))
+* **deps:** update dependency typescript to v6 ([587eed5](https://github.com/phi-ag/rvt/commit/587eed50794a8475bda750cfaeeb345c1438d46b))
+* **deps:** update dependency typescript-eslint to v8.58.0 ([5958ce4](https://github.com/phi-ag/rvt/commit/5958ce4ebacbf0f728584398a07d6f3eb1a5d131))
+* **deps:** update dependency typescript-eslint to v8.58.1 ([6f0e78f](https://github.com/phi-ag/rvt/commit/6f0e78fc931b15d174b19cbd2ba04679c50d93fd))
+* **deps:** update node.js to v25.9.0 ([6e0f820](https://github.com/phi-ag/rvt/commit/6e0f8207de34976ccbc396f4f8ca23b3eab68f06))
+* **deps:** update vitest monorepo to v4.1.3 ([1c1714b](https://github.com/phi-ag/rvt/commit/1c1714b9d5e3a195c654eb9c012cbd6c5874b3ee))
+* **deps:** update vitest monorepo to v4.1.4 ([71b09ab](https://github.com/phi-ag/rvt/commit/71b09ab4313dfb3e6d73130568d23b4d9a1eba5f))
+
 ## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2026-04-01)
 
 
