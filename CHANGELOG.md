@@ -1,5 +1,30 @@
 # Changelog
 
+## [0.2.5](https://github.com/phi-ag/rvt/compare/v0.2.4...v0.2.5) (2026-04-18)
+
+
+### Miscellaneous Chores
+
+* **deps:** lock file maintenance ([abdc97b](https://github.com/phi-ag/rvt/commit/abdc97bb905afebe62f27c9fb1540755389eeefd))
+* **deps:** update actions/cache digest to 27d5ce7 ([d6ed194](https://github.com/phi-ag/rvt/commit/d6ed19464fb2e7c6a0c891a2b8f8ae51fb323c51))
+* **deps:** update dependency @types/node to v25.5.2 ([4866a9d](https://github.com/phi-ag/rvt/commit/4866a9dac975f0541f540d09bdd9b1fc5ed32162))
+* **deps:** update dependency @types/node to v25.6.0 ([3d41ccb](https://github.com/phi-ag/rvt/commit/3d41ccbe156ddf272f4724e3418d3b07c0fe1a5d))
+* **deps:** update dependency bun to v1.3.12 ([00289b1](https://github.com/phi-ag/rvt/commit/00289b18264e0502f811c2d6b1d17fc1700217fd))
+* **deps:** update dependency deno to v2.7.11 ([61526ef](https://github.com/phi-ag/rvt/commit/61526ef8cb597d9485ddde507246d3a3363cb035))
+* **deps:** update dependency deno to v2.7.12 ([0612176](https://github.com/phi-ag/rvt/commit/0612176cffde20409d7b99410b42651a970dd86d))
+* **deps:** update dependency eslint to v10.2.0 ([a53835d](https://github.com/phi-ag/rvt/commit/a53835dc09b3f123958fba12a702accc8e7ddcc1))
+* **deps:** update dependency globals to v17.5.0 ([bae8aa5](https://github.com/phi-ag/rvt/commit/bae8aa50dc9473680bed69118c4cb6d02ebe8173))
+* **deps:** update dependency prettier to v3.8.2 ([5a3f6e2](https://github.com/phi-ag/rvt/commit/5a3f6e2452ad31d38b7a175e402c3fcaada49c60))
+* **deps:** update dependency prettier to v3.8.3 ([f530da3](https://github.com/phi-ag/rvt/commit/f530da339d611c08d65a8f3d38ed3a9c2fd2d4e2))
+* **deps:** update dependency typescript to v6 ([587eed5](https://github.com/phi-ag/rvt/commit/587eed50794a8475bda750cfaeeb345c1438d46b))
+* **deps:** update dependency typescript-eslint to v8.58.0 ([5958ce4](https://github.com/phi-ag/rvt/commit/5958ce4ebacbf0f728584398a07d6f3eb1a5d131))
+* **deps:** update dependency typescript-eslint to v8.58.1 ([6f0e78f](https://github.com/phi-ag/rvt/commit/6f0e78fc931b15d174b19cbd2ba04679c50d93fd))
+* **deps:** update dependency typescript-eslint to v8.58.2 ([28d06c4](https://github.com/phi-ag/rvt/commit/28d06c48436c23856218d2e73c68c0be5df46cb9))
+* **deps:** update googleapis/release-please-action digest to 5c625bf ([5745811](https://github.com/phi-ag/rvt/commit/5745811db4f4a7b33bcb63c53a30bfc6ad6d1622))
+* **deps:** update node.js to v25.9.0 ([6e0f820](https://github.com/phi-ag/rvt/commit/6e0f8207de34976ccbc396f4f8ca23b3eab68f06))
+* **deps:** update vitest monorepo to v4.1.3 ([1c1714b](https://github.com/phi-ag/rvt/commit/1c1714b9d5e3a195c654eb9c012cbd6c5874b3ee))
+* **deps:** update vitest monorepo to v4.1.4 ([71b09ab](https://github.com/phi-ag/rvt/commit/71b09ab4313dfb3e6d73130568d23b4d9a1eba5f))
+
 ## [0.2.4](https://github.com/phi-ag/rvt/compare/v0.2.3...v0.2.4) (2026-04-01)
 
 
