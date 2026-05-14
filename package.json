@@ -39,13 +39,13 @@
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/deno": "2.5.0",
     "@types/node": "25.6.2",
-    "@vitest/coverage-v8": "4.1.5",
+    "@vitest/coverage-v8": "4.1.6",
     "eslint": "10.3.0",
     "globals": "17.6.0",
     "prettier": "3.8.3",
     "typescript": "6.0.3",
     "typescript-eslint": "8.59.3",
-    "vitest": "4.1.5"
+    "vitest": "4.1.6"
   },
   "packageManager": "pnpm@11.0.9+sha512.34ce82e6780233cf9cad8685029a8f81d2e06196c5a9bad98879f7424940c6817c4e4524fb7d38b8553ceed48b9758b8ebaf1abd3600c232c4c8cf7366086f38"
 }
