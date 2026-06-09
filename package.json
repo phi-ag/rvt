@@ -38,7 +38,7 @@
     "@eslint/js": "10.0.1",
     "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/deno": "2.7.0",
-    "@types/node": "25.9.1",
+    "@types/node": "25.9.2",
     "@vitest/coverage-v8": "4.1.8",
     "eslint": "10.4.1",
     "globals": "17.6.0",
