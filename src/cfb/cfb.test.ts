@@ -100,3 +100,75 @@ describe("cfb", () => {
     );
   });
 });
+
+/** Directory index of an entry, assumes a single directory sector */
+const entryIndex = (data: Uint8Array, name: string): number => {
+  const view = new DataView(data.buffer, data.byteOffset);
+  const directory = (view.getUint32(48, true) + 1) * sectorSize;
+  return (entryOffset(data, name) - directory) / 128;
+};
+
+describe("cfb paths", () => {
+  test("entries", async () => {
+    const cfb = await open(await loadExample());
+    expect(cfb.entries().map((entry) => entry.path)).toEqual([
+      "",
+      "Formats",
+      "RevitPreview4.0",
+      "Global",
+      "Partitions",
+      "Contents",
+      "TransmissionData",
+      "BasicFileInfo",
+      "PartAtom",
+      "Partitions/69",
+      "Global/DocumentIncrementTable",
+      "Global/History",
+      "Global/PartitionTable",
+      "Global/ContentDocuments",
+      "Global/ElemTable",
+      "Global/Latest",
+      "Formats/Latest"
+    ]);
+  });
+
+  test("find path", async () => {
+    const cfb = await open(await loadExample());
+    expect(cfb.findPath("Global/Latest")).toMatchObject({ name: "Latest", size: 68508 });
+    expect(cfb.findPath("Formats/Latest")).toMatchObject({
+      name: "Latest",
+      size: 165553
+    });
+    expect(cfb.findPath("")).toMatchObject({ name: "Root Entry" });
+    expect(cfb.findPath("Latest")).toBeUndefined();
+    expect(cfb.findPath("Global/Missing")).toBeUndefined();
+  });
+
+  test("find entry returns first match", async () => {
+    const cfb = await open(await loadExample());
+    expect(cfb.findEntry("Latest")).toBe(cfb.findPath("Global/Latest"));
+  });
+
+  test("entries returns a copy", async () => {
+    const cfb = await open(await loadExample());
+    cfb.entries().length = 0;
+    expect(cfb.entries()).toHaveLength(17);
+  });
+
+  test("cyclic directory tree", async () => {
+    const data = await loadExample();
+    const view = new DataView(data.buffer, data.byteOffset);
+    const offset = entryOffset(data, "BasicFileInfo");
+    view.setInt32(offset + 68, entryIndex(data, "BasicFileInfo"), true);
+
+    await expect(open(data)).rejects.toThrow("Directory entry cycle");
+  });
+
+  test("directory tree references unused entry", async () => {
+    const data = await loadExample();
+    const view = new DataView(data.buffer, data.byteOffset);
+    view.setInt32(entryOffset(data, "BasicFileInfo") + 68, 31, true);
+
+    await expect(open(data)).rejects.toThrow("Directory entry reference invalid (31)");
+  });
+});

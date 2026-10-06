@@ -71,6 +71,20 @@ tryBasicFileInfo(invalidFile);
 // => { ok: false; error: "Error message" }
 ```
 
+### Entries
+
+List all entries of the compound file, or find one by its full path. Names are not unique, eg. `Global/Latest` and `Formats/Latest`.
+
+```ts
+file.entries().map((entry) => entry.path);
+// => ["", "Formats", "RevitPreview4.0", ..., "Global/Latest", "Formats/Latest"]
+
+const entry = file.findPath("Global/ElemTable");
+if (entry) {
+  const data = await file.entryData(entry);
+}
+```
+
 ## Development
 
 Install [fnm](https://github.com/Schniz/fnm?tab=readme-ov-file#installation) or [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating) ([nvm-windows](https://github.com/coreybutler/nvm-windows?tab=readme-ov-file#installation--upgrades))

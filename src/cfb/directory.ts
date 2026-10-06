@@ -16,6 +16,8 @@ export enum EntryType {
 
 export interface Entry {
   name: string;
+  /** Full path from the root storage, eg. `Global/Latest`, the root itself is `""` */
+  path: string;
   type: EntryType;
   color: EntryColor;
   left: number;
@@ -31,7 +33,9 @@ export interface Entry {
 
 const decoder = new TextDecoder("utf-16le");
 
-const parseEntry = (data: Uint8Array): Entry => {
+type RawEntry = Omit<Entry, "path">;
+
+const parseEntry = (data: Uint8Array): RawEntry => {
   const view = new DataView(data.buffer, data.byteOffset);
 
   const maxNameLength = 64;
@@ -77,25 +81,61 @@ const parseEntry = (data: Uint8Array): Entry => {
 
 export type Directory = Entry[];
 
-const parseDirectorySector = (entryCount: number, sector: Uint8Array): Directory => {
+const noStream = -1;
+
+const parseDirectorySector = (
+  entryCount: number,
+  sector: Uint8Array
+): (RawEntry | undefined)[] => {
   const entries = [];
   for (let i = 0; i < entryCount; i++) {
     const start = i * 128;
     const entry = parseEntry(sector.subarray(start, start + 128));
-    if (entry.type !== 0) entries.push(entry);
+    entries.push(entry.type !== EntryType.Unknown ? entry : undefined);
   }
 
   return entries;
 };
 
 /**
+ * Walk the red-black tree of each storage to resolve the full path of every entry
+ *
+ * Entries reference each other by their index in the directory, including unused entries.
+ */
+const resolvePaths = (entries: (RawEntry | undefined)[]): (string | undefined)[] => {
+  const paths: (string | undefined)[] = [];
+
+  const rootIndex = entries.findIndex((entry) => entry?.type === EntryType.RootStorage);
+  if (rootIndex === -1) return paths;
+
+  paths[rootIndex] = "";
+  const stack: [index: number, parent: string][] = [[entries[rootIndex]!.child, ""]];
+
+  for (let item = stack.pop(); item !== undefined; item = stack.pop()) {
+    const [index, parent] = item;
+    if (index === noStream) continue;
+
+    const entry = entries[index];
+    if (!entry) throw Error(`Directory entry reference invalid (${index})`);
+    if (paths[index] !== undefined) throw Error(`Directory entry cycle (${index})`);
+
+    const path = parent ? `${parent}/${entry.name}` : entry.name;
+    paths[index] = path;
+
+    stack.push([entry.left, parent], [entry.right, parent]);
+    if (entry.type === EntryType.Storage) stack.push([entry.child, path]);
+  }
+
+  return paths;
+};
+
+/**
  * Parse the CFB directory
+ *
+ * Entries are returned in directory order, unused and unreachable entries are skipped.
  *
  * - https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-cfb/60fe8611-66c3-496b-b70d-a504c94c9ace
  * - https://github.com/SheetJS/js-cfb/blob/master/cfb.js#L618
- *
- * TODO: full path
- *
  */
 export const parseDirectory = (header: Header, sectors: Uint8Array): Directory => {
   const entryCount = header.version === 3 ? 4 : 32;
@@ -108,5 +148,13 @@ export const parseDirectory = (header: Header, sectors: Uint8Array): Directory =
     for (const entry of sectorEntries) entries.push(entry);
   }
 
-  return entries;
+  const paths = resolvePaths(entries);
+
+  const directory: Directory = [];
+  entries.forEach((entry, i) => {
+    const path = paths[i];
+    if (entry && path !== undefined) directory.push({ ...entry, path });
+  });
+
+  return directory;
 };
