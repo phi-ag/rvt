@@ -2,6 +2,8 @@ import { Cfb, type Source } from "./cfb/index.js";
 
 export class DenoSource implements Source, Disposable {
   #file: Deno.FsFile;
+  // Seek and read share the file position, run one slice at a time
+  #queue: Promise<unknown> = Promise.resolve();
   size: number;
 
   constructor(file: Deno.FsFile, size: number) {
@@ -19,7 +21,13 @@ export class DenoSource implements Source, Disposable {
     return new DenoSource(file, fileInfo.size);
   }
 
-  async sliceBytes(start: number, end: number): Promise<Uint8Array> {
+  sliceBytes(start: number, end: number): Promise<Uint8Array> {
+    const slice = this.#queue.then(() => this.#readSlice(start, end));
+    this.#queue = slice.catch(noop);
+    return slice;
+  }
+
+  async #readSlice(start: number, end: number): Promise<Uint8Array> {
     if (start > end) throw Error(`Invalid slice arguments (start: ${start}, end ${end})`);
 
     const position = await this.#file.seek(start, Deno.SeekMode.Start);
@@ -28,7 +36,14 @@ export class DenoSource implements Source, Disposable {
 
     const size = end - start;
     const buffer = new Uint8Array(size);
-    const bytesRead = await this.#file.read(buffer);
+
+    // A read may return fewer bytes than requested
+    let bytesRead = 0;
+    while (bytesRead < size) {
+      const n = await this.#file.read(buffer.subarray(bytesRead));
+      if (n === null) break;
+      bytesRead += n;
+    }
 
     if (bytesRead !== size)
       throw Error(`Failed to read ${size} bytes from file (received ${bytesRead})`);
@@ -44,6 +59,9 @@ export class DenoSource implements Source, Disposable {
 
 export type DisposableCfb = Disposable & { data: Cfb };
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {};
+
 export interface OpenPathSuccess {
   ok: true;
   data: Cfb;
@@ -58,19 +76,21 @@ export interface OpenPathError {
 
 export type OpenPathResult = Disposable & (OpenPathSuccess | OpenPathError);
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-const noop = () => {};
-
 export const openPath = async (path: string | URL): Promise<DisposableCfb> => {
   const source = await DenoSource.open(path);
 
-  return {
-    data: await Cfb.initialize(source),
-    [Symbol.dispose]: () => source[Symbol.dispose]()
-  };
+  try {
+    return {
+      data: await Cfb.initialize(source),
+      [Symbol.dispose]: () => source[Symbol.dispose]()
+    };
+  } catch (e) {
+    source[Symbol.dispose]();
+    throw e;
+  }
 };
 
-export const tryOpenPath = async (path: string): Promise<OpenPathResult> => {
+export const tryOpenPath = async (path: string | URL): Promise<OpenPathResult> => {
   try {
     const cfb = await openPath(path);
     return { ok: true, data: cfb.data, [Symbol.dispose]: () => cfb[Symbol.dispose]() };
