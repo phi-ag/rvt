@@ -3,7 +3,7 @@ import { Cfb } from "./cfb/index.js";
 const findMarker = (data: Uint8Array): number | undefined => {
   const imageMarker = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a];
 
-  for (let i = 0; i < data.length - 6; i++) {
+  for (let i = 0; i <= data.length - 6; i++) {
     if (
       data[i] === imageMarker[0] &&
       data[i + 1] === imageMarker[1] &&
@@ -17,11 +17,42 @@ const findMarker = (data: Uint8Array): number | undefined => {
   }
 };
 
+/**
+ * Walk the PNG chunks to find the end of the image, data after IEND is not part of it
+ *
+ * - https://www.w3.org/TR/png-3/#5Chunk-layout
+ */
+const findEnd = (data: Uint8Array, start: number): number | undefined => {
+  const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+  const signatureLength = 8;
+  const iend = [0x49, 0x45, 0x4e, 0x44];
+
+  for (let offset = start + signatureLength; offset + 12 <= data.length;) {
+    // Length (4) + type (4) + data + crc (4), length is big-endian
+    const end = offset + 12 + view.getUint32(offset);
+    if (end > data.length) return;
+
+    if (
+      data[offset + 4] === iend[0] &&
+      data[offset + 5] === iend[1] &&
+      data[offset + 6] === iend[2] &&
+      data[offset + 7] === iend[3]
+    ) {
+      return end;
+    }
+
+    offset = end;
+  }
+};
+
 export const parsePreview = (data: Uint8Array): Blob => {
   const marker = findMarker(data);
-  if (!marker) throw Error("Failed to find preview image marker");
+  if (marker === undefined) throw Error("Failed to find preview image marker");
 
-  return new Blob([data.subarray(marker) as BlobPart], {
+  // Keep the remaining data if the image is truncated, decoders may still handle it
+  const end = findEnd(data, marker) ?? data.length;
+
+  return new Blob([data.subarray(marker, end) as BlobPart], {
     type: "image/png"
   });
 };
