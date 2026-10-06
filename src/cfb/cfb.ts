@@ -221,11 +221,7 @@ export class Cfb {
     return new Cfb(source, header, directory, fat, miniFat, miniStreamSectors);
   };
 
-  /** Find the first entry with this name, names are not unique, see {@link findPath} */
-  findEntry = (name: string): Entry | undefined =>
-    this.#directory.find((entry) => entry.name === name);
-
-  /** Find an entry by its full path, eg. `Global/Latest` */
+  /** Find an entry by its full path, eg. `Global/Latest`, names alone are not unique */
   findPath = (path: string): Entry | undefined =>
     this.#directory.find((entry) => entry.path === path);
 

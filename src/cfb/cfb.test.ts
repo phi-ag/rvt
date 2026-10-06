@@ -57,7 +57,7 @@ describe("cfb", () => {
     view.setUint32(entry + 120, 0, true);
 
     const cfb = await open(data);
-    const info = cfb.findEntry("BasicFileInfo");
+    const info = cfb.findPath("BasicFileInfo");
     expect(info).toMatchObject({ start: endOfChain, size: 0 });
     expect(await cfb.entryData(info!)).toEqual(new Uint8Array());
   });
@@ -69,7 +69,7 @@ describe("cfb", () => {
     view.setUint32(miniFatOffset(data) + start * 4, start, true);
 
     const cfb = await open(data);
-    const entry = cfb.findEntry("BasicFileInfo")!;
+    const entry = cfb.findPath("BasicFileInfo")!;
     expect((await cfb.entryData(entry)).byteLength).toBe(entry.size);
   });
 
@@ -78,7 +78,7 @@ describe("cfb", () => {
     const view = new DataView(data.buffer, data.byteOffset);
     const start = view.getUint32(entryOffset(data, "69") + 116, true);
     const cfb = await open(data);
-    const entry = cfb.findEntry("69")!;
+    const entry = cfb.findPath("Partitions/69")!;
 
     const fatSector = view.getUint32(76, true);
     view.setUint32((fatSector + 1) * sectorSize + start * 4, start, true);
@@ -95,7 +95,7 @@ describe("cfb", () => {
     view.setUint32(miniFatOffset(data) + start * 4, endOfChain, true);
 
     const cfb = await open(data);
-    await expect(cfb.entryData(cfb.findEntry("BasicFileInfo")!)).rejects.toThrow(
+    await expect(cfb.entryData(cfb.findPath("BasicFileInfo")!)).rejects.toThrow(
       "unexpected end of chain"
     );
   });
@@ -142,11 +142,6 @@ describe("cfb paths", () => {
     expect(cfb.findPath("")).toMatchObject({ name: "Root Entry" });
     expect(cfb.findPath("Latest")).toBeUndefined();
     expect(cfb.findPath("Global/Missing")).toBeUndefined();
-  });
-
-  test("find entry returns first match", async () => {
-    const cfb = await open(await loadExample());
-    expect(cfb.findEntry("Latest")).toBe(cfb.findPath("Global/Latest"));
   });
 
   test("entries returns a copy", async () => {
