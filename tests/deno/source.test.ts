@@ -3,6 +3,7 @@ import { describe, it } from "jsr:@std/testing/bdd";
 import { stub } from "jsr:@std/testing/mock";
 
 import { DenoSource, openPath, tryOpenPath } from "../../dist/deno.js";
+import { basicFileInfo } from "../../dist/index.js";
 
 const examplePath = "../../examples/Autodesk/racbasicsamplefamily-2026.rfa";
 
@@ -76,7 +77,7 @@ describe("deno source", () => {
 
   it("open url", async () => {
     using file = await openPath(new URL(examplePath, import.meta.url));
-    expect(file.data.findEntry("BasicFileInfo")).toBeDefined();
+    expect((await basicFileInfo(file.data)).version).toBe("2026");
 
     using result = await tryOpenPath(new URL(examplePath, import.meta.url));
     expect(result.ok).toBe(true);
