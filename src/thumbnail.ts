@@ -72,7 +72,7 @@ export interface ThumbnailError {
 export type ThumbnailResult = ThumbnailSuccess | ThumbnailError;
 
 export const thumbnail = async (cfb: Cfb): Promise<Blob> => {
-  const entry = cfb.findEntry("RevitPreview4.0");
+  const entry = cfb.findPath("RevitPreview4.0");
   if (!entry) throw Error("RevitPreview4.0 not found");
   return parsePreview(await cfb.entryData(entry));
 };

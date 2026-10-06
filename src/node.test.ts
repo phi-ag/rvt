@@ -162,6 +162,10 @@ describe("revit", () => {
     expect(info.path).toEqual(expected.path);
     expect(info.content).toMatch(/^Worksharing:/);
 
+    expect(file.findPath("Global/Latest")).toMatchObject({ name: "Latest" });
+    expect(file.findPath("Formats/Latest")).toMatchObject({ name: "Latest" });
+    expect(file.findPath("Global/Latest")).not.toBe(file.findPath("Formats/Latest"));
+
     expect(image.type).toBe("image/png");
     expect(await imageEnd(image)).toEqual(pngEnd);
   });

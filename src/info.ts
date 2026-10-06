@@ -222,7 +222,7 @@ export interface BasicFileInfoError {
 export type BasicFileInfoResult = BasicFileInfoSuccess | BasicFileInfoError;
 
 export const basicFileInfo = async (cfb: Cfb): Promise<FileInfo> => {
-  const entry = cfb.findEntry("BasicFileInfo");
+  const entry = cfb.findPath("BasicFileInfo");
   if (!entry) throw Error("Basic file info not found");
   return parseFileInfo(await cfb.entryData(entry));
 };
