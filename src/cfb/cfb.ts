@@ -227,11 +227,9 @@ export class Cfb {
   fatBounds = (start: number, size: number): Boundaries => {
     const bounds = new Boundaries();
 
-    for (let i = 0, current = start, remaining = size; ; i++) {
-      if (current === endOfChain) {
-        if (remaining !== 0) throw Error("Fat bounds unexpected end of chain");
-        break;
-      }
+    // Stop once the stream is read, a corrupted chain could be cyclic
+    for (let current = start, remaining = size; remaining > 0;) {
+      if (current === endOfChain) throw Error("Fat bounds unexpected end of chain");
 
       const start = (current + 1) * this.#header.sectorSize;
       const size = Math.min(remaining, this.#header.sectorSize);
@@ -263,11 +261,10 @@ export class Cfb {
   miniStreamBounds = (start: number, size: number): Boundaries => {
     const bounds = new Boundaries();
 
-    for (let i = 0, current = start, remaining = size; ; i++) {
-      if (current === endOfChain) {
-        if (remaining !== 0) throw Error("MiniStream bounds unexpected end of chain");
-        break;
-      }
+    // Stop once the stream is read, a corrupted chain could be cyclic
+    for (let current = start, remaining = size; remaining > 0;) {
+      if (current === endOfChain)
+        throw Error("MiniStream bounds unexpected end of chain");
 
       const start = this.miniStreamOffset(current);
 
