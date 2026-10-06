@@ -56,8 +56,8 @@ const parseEntry = (data: Uint8Array): Entry => {
   const hasModified = !array.isZero(data.subarray(108, 116));
   const modified = hasModified ? readDate(view, 108) : undefined;
 
-  const start = view.getInt32(116, true);
-  const size = view.getInt32(120, true);
+  const start = view.getUint32(116, true);
+  const size = view.getUint32(120, true);
 
   return {
     name,
