@@ -16,6 +16,12 @@ export const adskExamplePath = (fileName: string): string =>
 export const adskExampleFile = (fileName: string): Promise<Cfb> =>
   openPath(adskExamplePath(fileName));
 
+// IEND chunk type followed by its crc
+const pngEnd = new Uint8Array([0x49, 0x45, 0x4e, 0x44, 0xae, 0x42, 0x60, 0x82]);
+
+const imageEnd = async (image: Blob): Promise<Uint8Array> =>
+  new Uint8Array(await image.slice(-pngEnd.length).arrayBuffer());
+
 type ExpectedFileInfo = Omit<FileInfo, "fileVersion" | "content">;
 
 describe("revit", () => {
@@ -156,6 +162,7 @@ describe("revit", () => {
     expect(info.path).toEqual(expected.path);
     expect(info.content).toMatch(/^Worksharing:/);
 
-    expect(image).toBeDefined();
+    expect(image.type).toBe("image/png");
+    expect(await imageEnd(image)).toEqual(pngEnd);
   });
 });
