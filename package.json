@@ -1,10 +1,11 @@
 {
-  "type": "module",
   "name": "@phi-ag/rvt",
   "version": "0.2.5",
-  "license": "MIT",
   "description": "Parse Revit file format",
-  "sideEffects": false,
+  "keywords": [
+    "revit"
+  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phi-ag/rvt.git"
@@ -12,11 +13,10 @@
   "files": [
     "dist"
   ],
-  "keywords": [
-    "revit"
-  ],
-  "types": "./dist/index.d.ts",
+  "type": "module",
+  "sideEffects": false,
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": "./dist/index.js",
     "./node": "./dist/node.js",
@@ -30,19 +30,18 @@
     "test:dev": "vitest",
     "test:coverage": "vitest --run --coverage src",
     "bench": "pnpm vitest bench --run",
-    "format": "prettier --write \"**/*.{js,ts,json,yml,yaml}\"",
-    "format:check": "prettier --check \"**/*.{js,ts,json,yml,yaml}\"",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
     "check": "pnpm format:check && pnpm lint && pnpm typecheck && pnpm test"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@trivago/prettier-plugin-sort-imports": "6.0.2",
     "@types/deno": "2.7.0",
     "@types/node": "26.6.4",
     "@vitest/coverage-v8": "5.0.3",
     "eslint": "10.12.0",
     "globals": "17.13.0",
-    "prettier": "3.9.9",
+    "oxfmt": "0.72.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.71.0",
     "vitest": "5.0.3"

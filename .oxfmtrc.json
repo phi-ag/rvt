@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "semi": true,
+  "trailingComma": "none",
+  "singleQuote": false,
+  "printWidth": 90,
+  "tabWidth": 2,
+  "useTabs": false,
+  "sortImports": {
+    "groups": [
+      "builtin",
+      "type-import",
+      "value-external",
+      "type-internal",
+      "value-internal",
+      ["type-parent", "type-sibling", "type-index"],
+      ["value-parent", "value-sibling", "value-index"],
+      "unknown"
+    ]
+  },
+  "sortPackageJson": false,
+  "ignorePatterns": ["CHANGELOG.md"]
+}
