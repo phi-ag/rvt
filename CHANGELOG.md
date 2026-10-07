@@ -1,5 +1,40 @@
 # Changelog
 
+## [0.3.0](https://github.com/phi-ag/rvt/compare/v0.2.5...v0.3.0) (2026-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* Cfb.findEntry(name) is removed, use Cfb.findPath(path) with the full path instead, eg. findPath("Global/Latest"). Top-level entries keep their name as path, eg. findPath("BasicFileInfo").
+
+### Features
+
+* remove findEntry, use findPath ([0a9c2a6](https://github.com/phi-ag/rvt/commit/0a9c2a6bd63888af77f96aa3e75e687538b0fedc))
+* resolve full entry paths, add findPath and entries ([bb065ec](https://github.com/phi-ag/rvt/commit/bb065ec67689c99449dbe7c1728d8577df03f8d9))
+
+
+### Bug Fixes
+
+* **deno:** close file on failed open, handle short and concurrent reads ([baeb909](https://github.com/phi-ag/rvt/commit/baeb909d72115c86e003d6c0c61a3381514b1d71))
+
+
+### Miscellaneous Chores
+
+* **deps:** update pnpm to v12.9.1 ([f896e4d](https://github.com/phi-ag/rvt/commit/f896e4d283c9352dfed49458aec969b9aaf51477))
+* switch to oxfmt ([fef5a2a](https://github.com/phi-ag/rvt/commit/fef5a2ac3b6cc589f01307c0f83744e87f56e970))
+
+
+### Tests
+
+* **deno:** check open url with basicFileInfo instead of findEntry ([4c22d78](https://github.com/phi-ag/rvt/commit/4c22d78a7d839b9171aca37684aaa2150fd44520))
+* fix benchmark ([350a3a7](https://github.com/phi-ag/rvt/commit/350a3a749f485e827094d5f8fc4e8b370d326ef2))
+
+
+### Continuous Integration
+
+* avoid duplicated check runs in prs ([981f336](https://github.com/phi-ag/rvt/commit/981f33651795d18331257575fcab5fd048d58314))
+* run check for pull requests ([77b27f0](https://github.com/phi-ag/rvt/commit/77b27f0d054e9e9ef24817ee602714cdde304e53))
+
 ## [0.2.5](https://github.com/phi-ag/rvt/compare/v0.2.4...v0.2.5) (2026-10-06)
 
 
