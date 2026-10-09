@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.1](https://github.com/phi-ag/rvt/compare/v0.3.0...v0.3.1) (2026-10-09)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-node digest to 949feb2 ([946fdf7](https://github.com/phi-ag/rvt/commit/946fdf7f7d0e7ba4b28983bb0ae10dbb7b3fb3a3))
+* **deps:** update dependency typescript-eslint to v8.71.1 ([e9efcc6](https://github.com/phi-ag/rvt/commit/e9efcc6592026afb3f5f06610659274bbf01ecd6))
+* **deps:** update node.js to v26.11.1 ([b6bc7fc](https://github.com/phi-ag/rvt/commit/b6bc7fc47479841104c5a72fa4d618f5fd0377f3))
+* **deps:** update pnpm to v12.10.0 ([53a159f](https://github.com/phi-ag/rvt/commit/53a159f5a5ffeea211e786b730a4472b3a71356b))
+* **deps:** update pnpm to v12.10.1 ([747ed2d](https://github.com/phi-ag/rvt/commit/747ed2d003e4b436ab95e9045a6ca7801b78be9c))
+
 ## [0.3.0](https://github.com/phi-ag/rvt/compare/v0.2.5...v0.3.0) (2026-10-07)
 
 
