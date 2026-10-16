@@ -1,6 +1,6 @@
 {
   "name": "@phi-ag/rvt",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Parse Revit file format",
   "keywords": [
     "revit"
