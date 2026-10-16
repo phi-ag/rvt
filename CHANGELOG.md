@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.3.1](https://github.com/phi-ag/rvt/compare/v0.3.0...v0.3.1) (2026-10-16)
+
+
+### Miscellaneous Chores
+
+* **deps:** update actions/setup-node digest to 949feb2 ([946fdf7](https://github.com/phi-ag/rvt/commit/946fdf7f7d0e7ba4b28983bb0ae10dbb7b3fb3a3))
+* **deps:** update dependency @types/node to v26.6.5 ([c172a93](https://github.com/phi-ag/rvt/commit/c172a935b696c744a8ae79f7c6037619a4a92436))
+* **deps:** update dependency bun to v1.4.3 ([df1dd66](https://github.com/phi-ag/rvt/commit/df1dd663a2ab7f84cd16c832f0b5099ff1691622))
+* **deps:** update dependency typescript-eslint to v8.71.1 ([e9efcc6](https://github.com/phi-ag/rvt/commit/e9efcc6592026afb3f5f06610659274bbf01ecd6))
+* **deps:** update dependency typescript-eslint to v8.71.2 ([e0abdbd](https://github.com/phi-ag/rvt/commit/e0abdbd0e84509d4a8c23e02cb0123afbfc4268d))
+* **deps:** update node.js to v26.11.1 ([b6bc7fc](https://github.com/phi-ag/rvt/commit/b6bc7fc47479841104c5a72fa4d618f5fd0377f3))
+* **deps:** update node.js to v26.12.0 ([10da380](https://github.com/phi-ag/rvt/commit/10da380a27fd01a28cfd2b957d7ac6142075c2c6))
+* **deps:** update pnpm to v12.10.0 ([53a159f](https://github.com/phi-ag/rvt/commit/53a159f5a5ffeea211e786b730a4472b3a71356b))
+* **deps:** update pnpm to v12.10.1 ([747ed2d](https://github.com/phi-ag/rvt/commit/747ed2d003e4b436ab95e9045a6ca7801b78be9c))
+* **deps:** update pnpm to v12.11.0 ([a60cb01](https://github.com/phi-ag/rvt/commit/a60cb017ed9b1f9a77981254a445cf7666542c60))
+* **deps:** update pnpm to v12.11.2 ([763a613](https://github.com/phi-ag/rvt/commit/763a613a4165deb2486e2b8997013da9a93ffeb5))
+* **deps:** update pnpm to v12.13.0 ([718aede](https://github.com/phi-ag/rvt/commit/718aedef9abcae3b6a867957d092b37d1c85dd9b))
+* **deps:** update vitest monorepo to v5.0.4 ([2322b76](https://github.com/phi-ag/rvt/commit/2322b7679820ac7a78382e1d4f8b6fa0e3901b61))
+* remove obsolete .prettierignore ([8dc553f](https://github.com/phi-ag/rvt/commit/8dc553f1ba4d163456ef18b74d4ec2f4b3cb32d4))
+
 ## [0.3.0](https://github.com/phi-ag/rvt/compare/v0.2.5...v0.3.0) (2026-10-07)
 
 
