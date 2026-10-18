@@ -146,6 +146,17 @@ describe("revit", () => {
         documentId: "5ee56283-7ce7-4af9-8c63-7265dce3247d",
         path: "C:\\Users\\hansonje\\Desktop\\Downloadable Files\\racbasicsamplefamily.rfa"
       }
+    ],
+    [
+      "racbasicsamplefamily-2027.rfa",
+      {
+        version: "2027",
+        build: "20251222_1515(x64)",
+        locale: "ENU",
+        identityId: "00000000-0000-0000-0000-000000000000",
+        documentId: "698bcd82-9a8f-462d-ab01-990fd7bc22b5",
+        path: "R:\\APP\\RVT\\ceceb7ff22d8889a80db4ef6d3179f04492517ed\\pkg\\results\\20260330_2313_18\\Regression\\_I\\Task10\\CTU.jrn\\O\\R_O\\f9156c608993447b88b21fe0631879e2.rfa"
+      }
     ]
   ];
 
