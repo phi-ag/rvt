@@ -38,13 +38,13 @@
     "@eslint/js": "10.0.1",
     "@types/deno": "2.7.0",
     "@types/node": "26.6.10",
-    "@vitest/coverage-v8": "5.1.1",
+    "@vitest/coverage-v8": "5.1.2",
     "eslint": "10.15.0",
     "globals": "17.14.0",
     "oxfmt": "0.72.0",
     "typescript": "6.0.3",
     "typescript-eslint": "8.74.0",
-    "vitest": "5.1.1"
+    "vitest": "5.1.2"
   },
   "packageManager": "pnpm@12.20.0+sha512.6ccc74997ccef4e67999788e18dbfbfa583e2a849668668db4707b6a8306662f47156e650232a985bd3ec24cf9364c1aa154d37e51ed7aac62c1cd1e3afc80c3"
 }
